@@ -1,2 +1,2 @@
-# ccmaurice.github.io/skilltech/
+# https://ccmaurice.github.io/skilltech/
 # skilltech
