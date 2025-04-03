@@ -2,9 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <title>CcMaurice Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link id="favicon" rel="icon" href="sun-icon.png" type="image/png">
+    <style>
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .dark-mode .nav-container, .dark-mode .dropdown {
+            background-color: #1e1e1e;
+        }
+        .dark-mode .link a {
+            color: #ffffff;
+        }
+        .dark-mode .btn button {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #ffffff; /* Ensure the toggle button is white */
+        }
+    </style>
 </head>
 <body>
 
@@ -58,10 +84,13 @@
             </div>
         </section>
         
+        <div class="theme-toggle" onclick="toggleTheme()">
+            <i class="fa-solid fa-sun" id="theme-icon" style="color: #ffffff;"></i> <!-- Set icon color to white -->
+        </div>
+        
         <script>
           AOS.init({offset:0});
-        </script>
-        <script>
+
             function hamburg(){
                 const navbar = document.querySelector(".dropdown")
                 navbar.style.transform = "translateY(0px)"
@@ -69,6 +98,21 @@
             function cancel(){
                 const navbar = document.querySelector(".dropdown")
                 navbar.style.transform = "translateY(-500px)"
+            }
+            function toggleTheme() {
+                const body = document.body;
+                const themeIcon = document.getElementById("theme-icon");
+                const favicon = document.getElementById("favicon");
+                body.classList.toggle("dark-mode");
+                if (body.classList.contains("dark-mode")) {
+                    themeIcon.classList.remove("fa-sun");
+                    themeIcon.classList.add("fa-moon");
+                    favicon.href = "moon-icon.png";
+                } else {
+                    themeIcon.classList.remove("fa-moon");
+                    themeIcon.classList.add("fa-sun");
+                    favicon.href = "sun-icon.png";
+                }
             }
         </script>
 </body>
